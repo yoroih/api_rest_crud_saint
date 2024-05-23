@@ -34,6 +34,11 @@
       "nombre": "Aldebaran",
       "constelacion": "Tauro",
       "id": 7
+    },
+    {
+      "nombre": "Saga",
+      "constelacion": "Géminis",
+      "id": 8
     }
   ],
   "dioses": [

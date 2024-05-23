@@ -33,7 +33,6 @@ const getAll = () => {
   ajax({
     url: "http://localhost:3000/caballeros",
     success: (res) => {
-      console.log(res);
       res.forEach(el => {
         $template.querySelector(".name").textContent = el.nombre;
         $template.querySelector(".constellation").textContent = el.constelacion;
@@ -75,6 +74,40 @@ d.addEventListener("submit", e => {
       });
     }  else {
       //UPDATE - PUT
+      ajax({
+        url: `http://localhost:3000/caballeros/${e.target.id.value}`,
+        method: "PUT",
+        success: () => location.reload(),
+        error: () => $form.insertAdjacentHTML("afterend",`<p><b>${err}</b></p>`),
+        data: {
+          nombre: e.target.nombre.value,
+          constelacion: e.target.constelacion.value
+        }
+      });
     }
   }
 });
+
+d.addEventListener("click", e => {
+  if(e.target.matches(".edit")){
+    console.log("editar")
+    $title.textContent = "Editar Caballero";
+    $form.nombre.value = e.target.dataset.name;
+    $form.constelacion.value = e.target.dataset.constellation;
+    $form.id.value = e.target.dataset.id;
+
+  }
+
+  if(e.target.matches(".delete")){
+    let isDelete = confirm(`¿Estas seguro de eliminar ${e.target.dataset.id}?`)
+    //DELETE - DELETE
+    if(isDelete){
+      ajax({
+        url: `http://localhost:3000/caballeros/${e.target.dataset.id}`,
+        method: "DELETE",
+        success: () => location.reload(),
+        error: () => alert(err)
+      });
+    }
+  }
+})
