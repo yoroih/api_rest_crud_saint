@@ -76,6 +76,5 @@ d.addEventListener("submit", e => {
     }  else {
       //UPDATE - PUT
     }
-
   }
 });
