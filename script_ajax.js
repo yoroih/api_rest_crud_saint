@@ -95,7 +95,6 @@ d.addEventListener("click", e => {
     $form.nombre.value = e.target.dataset.name;
     $form.constelacion.value = e.target.dataset.constellation;
     $form.id.value = e.target.dataset.id;
-
   }
 
   if(e.target.matches(".delete")){
