@@ -126,7 +126,7 @@ d.addEventListener("click", async e => {
         location.reload();
       } catch (error) {
         let message = err.statusText || "Ocurrió un error";
-        $form.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}: ${message}</b></p>`);
+        alert(`Error ${error.status}: ${message}`);
       }
     }
   }
